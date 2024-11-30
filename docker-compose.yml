@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    container_name: online-dj-booking-management-system-php
+    ports:
+      - "8081:80"
+    volumes:
+      - ./odms:/var/www/html
+    networks:
+      - app-network
+    environment:
+      - DB_HOST=odmsdb.cb6006uk048c.ap-southeast-2.rds.amazonaws.com
+      - DB_USER=admin
+      - DB_PASS=khangksp456
+      - DB_NAME=odmsdb
+
+  mysql:
+    image: mysql:8.0
+    container_name: online-dj-booking-management-system-mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: odmsdb
+    ports:
+      - "3366:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./SQL File/odmsdb.sql:/docker-entrypoint-initdb.d/odmsdb.sql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

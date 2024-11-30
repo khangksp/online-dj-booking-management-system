@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  onlinedjbookingmanagementsystem:
+    image: onlinedjbookingmanagementsystem
+    build:
+      context: .
+      dockerfile: ./Dockerfile
