@@ -13,7 +13,7 @@ services:
     environment:
       - DB_HOST=odmsdb.cb6006uk048c.ap-southeast-2.rds.amazonaws.com
       - DB_USER=admin
-      - DB_PASS=123456
+      - DB_PASS=khangksp456
       - DB_NAME=odmsdb
 
   mysql:
