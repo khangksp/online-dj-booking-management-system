@@ -20,6 +20,7 @@ COPY ./odms /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 755 /var/www/html
 
+# RUN sed -i 's/Listen 80/Listen 3000/' /etc/apache2/ports.conf -- Nếu muốn chạy port 3000
 # Mở cổng 80 cho HTTP
 EXPOSE 80
 

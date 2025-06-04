@@ -11,15 +11,19 @@ services:
     networks:
       - app-network
     environment:
-      - DB_HOST=odmsdb.cb6006uk048c.ap-southeast-2.rds.amazonaws.com
-      - DB_USER=admin
-      - DB_PASS=khangksp456
+      # Sử dụng tên service thay vì IP
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASS=
       - DB_NAME=odmsdb
+    depends_on:
+      - mysql
 
   mysql:
     image: mysql:8.0
     container_name: online-dj-booking-management-system-mysql
     environment:
+      # Không đặt password cho root
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: odmsdb
     ports:
